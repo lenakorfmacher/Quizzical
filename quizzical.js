@@ -1,3 +1,10 @@
+// Copyright (c) 2024 Lena Korfmacher
+
+// This software is licensed under the MIT License.
+// For more information, see the LICENSE file in the root of this repository.
+
+
+
 // GLOBAL VARIABLES ---------------------------------------------------------------------------------------------------------------------------------------- //
 // The following variables have global scope so that they are accessible in every function without passing it as arguments from function to function
 
@@ -37,7 +44,7 @@ window.onload = function() {
 // Fetch questions
 async function getQuestions() {
     try {
-        // I am fetching 20 questions. I "need" only one per quiz round, but since I am sorting out questions with multiple correct answers and 
+        // I am fetching 20 questions. I need only one per quiz round, but since I am sorting out questions with multiple correct answers and 
         // selecting for level of difficulty, I need to have enough alternatives. As "hard" questions are rare, the limit must be high. 
         var response = await fetch("https://quizapi.io/api/v1/questions?apiKey=Wztsr3Tk20xob6uYN3TO1vszQAf1jJF0Fj1ijKk1&limit=20")
         var questions = await response.json();
@@ -134,7 +141,6 @@ function initialiseGame() {
     score = 0;
 
     // At the beginning of the game, display the info bar and all buttons that the player can use during a game
-    // style.display taken from https://www.w3schools.com/jsref/prop_style_display.asp (last accessed 31/01/24)
     document.getElementById("info").style.display = "flex";
     document.getElementById("endQuiz").style.display = "inline";
     document.getElementById("50:50joker").style.display = "inline";
@@ -254,7 +260,6 @@ function selectQuestions() {
             //console.log("question with multiple correct answers skipped");
             questionIndex++;
             // Move on to the next question
-            // continue taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue (last accessed 06/02/24)
             continue;
         }
 
@@ -418,7 +423,6 @@ function evaluateAnswer(ans, content, countdownInterval) {
 }
 
 // Ensure that HTML questions are displayed correctly
-// The following function is taken from https://jasonwatmore.com/vanilla-js-html-encode-in-javascript (last accessed 29/01/24)
 function htmlEncode(input) {
     return input
         .replace(/&/g, '&amp;')
@@ -558,7 +562,6 @@ function setTimer() {
     document.getElementById("timer").style.color = "white";
 
     // Update the countdown every second
-    // setInterval() function taken from https://developer.mozilla.org/en-US/docs/Web/API/setInterval (last accessed 31/01/24)
     const countdownInterval = setInterval(() => updateCountdown(), 1000);
 
     // Function to update the countdown
@@ -576,7 +579,6 @@ function setTimer() {
         }
 
         // If the countdown reaches 0 (-1 to get the full last second), the question will count as wrong and a new quiz round starts
-        // clearInterval() function taken from https://developer.mozilla.org/en-US/docs/Web/API/setInterval (last accessed 31/01/24)
         if (countdownSeconds === -1) {
             // Set interval back/clear interval
             clearInterval(countdownInterval);
@@ -659,7 +661,6 @@ function pauseTimer(countdownSeconds, countdownInterval) {
         timeout--;
 
         // Get all elements with class "answerchoice"
-        // querySelectorAll taken from https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll (last accessed 04/02/24)
         // document.getElementByClassName does not work in the forEach function. This seems to be the case because querySelectorAll returns a NodeList 
         // while getElementByClassName returns an HTMLCollection (see https://stackoverflow.com/questions/14377590/queryselector-and-queryselectorall-vs-getelementsbyclassname-and-getelementbyid, last accessed 04/02/24)
         const answerElements = document.querySelectorAll(".answerchoice");
