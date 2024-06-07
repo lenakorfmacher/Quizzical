@@ -1,6 +1,6 @@
 # Quizzical
 
-Quizzical is a trivia quiz web application that generates quiz questions using the QuizAPI. It is built with JavaScript, HTML, and CSS, and uses Bootstrap for styling.
+Quizzical is a trivia quiz web application that generates quiz questions using QuizAPI.
 
 ## Purpose
 
